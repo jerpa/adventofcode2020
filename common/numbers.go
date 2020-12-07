@@ -15,6 +15,15 @@ func GetInts(data []string) []int {
 	return result
 }
 
+// GetInt converts a slice of strings to a slice of ints
+func GetInt(data string) int {
+	val, err := strconv.Atoi(data)
+	if err != nil {
+		panic(err.Error())
+	}
+	return val
+}
+
 // GetFloats converts a slice of strings to a slice of floats
 func GetFloats(data []string) []float64 {
 	result := []float64{}
