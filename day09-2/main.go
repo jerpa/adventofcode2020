@@ -15,33 +15,6 @@ func validSum(num []int, sum int) bool {
 	return false
 }
 
-func sum(nums []int) int {
-	sum := 0
-	for _, v := range nums {
-		sum += v
-	}
-	return sum
-}
-
-func minInt(nums []int) int {
-	res := 0
-	for i, v := range nums {
-		if i == 0 || v < res {
-			res = v
-		}
-	}
-	return res
-}
-func maxInt(nums []int) int {
-	res := 0
-	for i, v := range nums {
-		if i == 0 || v > res {
-			res = v
-		}
-	}
-	return res
-}
-
 func main() {
 	var inv int
 
@@ -61,12 +34,12 @@ func main() {
 	stop := 0
 	for {
 		for stop = start + 1; stop < len(data); stop++ {
-			s := sum(data[start:stop])
+			s := c.Sum(data[start:stop])
 			if s > inv {
 				break
 			}
 			if s == inv {
-				c.Print(minInt(data[start:stop]) + maxInt(data[start:stop]))
+				c.Print(c.MinInt(data[start:stop]) + c.MaxInt(data[start:stop]))
 				return
 			}
 		}

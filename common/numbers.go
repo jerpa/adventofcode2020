@@ -36,3 +36,34 @@ func GetFloats(data []string) []float64 {
 	}
 	return result
 }
+
+// MinInt returns the lowest number from a slice
+func MinInt(nums []int) int {
+	res := 0
+	for i, v := range nums {
+		if i == 0 || v < res {
+			res = v
+		}
+	}
+	return res
+}
+
+// MaxInt returns the highest number from a slice
+func MaxInt(nums []int) int {
+	res := 0
+	for i, v := range nums {
+		if i == 0 || v > res {
+			res = v
+		}
+	}
+	return res
+}
+
+// Sum returns the sum of a slice of ints
+func Sum(nums []int) int {
+	sum := 0
+	for _, v := range nums {
+		sum += v
+	}
+	return sum
+}
