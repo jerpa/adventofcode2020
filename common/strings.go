@@ -30,3 +30,16 @@ func GetSimilarity(s1, s2 string) string {
 	}
 	return res
 }
+
+// CountChar counts how many times a character exists in a string slice
+func CountChar(data []string, c rune) int {
+	sum := 0
+	for _, r := range data {
+		for _, v := range r {
+			if v == c {
+				sum++
+			}
+		}
+	}
+	return sum
+}
