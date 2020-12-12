@@ -2,8 +2,6 @@ package main
 
 import (
 	c "adventofcode2020/common"
-	"crypto/md5"
-	"encoding/json"
 	"sort"
 )
 
@@ -22,11 +20,6 @@ func indexOf(data []int, num int) int {
 	return -1
 }
 
-func checksum(data []int) [16]byte {
-	jsonBytes, _ := json.Marshal(data)
-	return md5.Sum(jsonBytes)
-}
-
 func chain(data []int) uint64 {
 
 	var res uint64
@@ -34,23 +27,23 @@ func chain(data []int) uint64 {
 	if len(data) == 1 {
 		return 1
 	}
-	if v, ok := checked[checksum(data)]; ok {
+	if v, ok := checked[c.Checksum(data)]; ok {
 		return v
 	}
 
 	if x := indexOf(data[1:], data[0]+1); x != -1 {
 		v := chain(data[x+1:])
-		checked[checksum(data[x+1:])] = v
+		checked[c.Checksum(data[x+1:])] = v
 		res += v
 	}
 	if x := indexOf(data[1:], data[0]+2); x != -1 {
 		v := chain(data[x+1:])
-		checked[checksum(data[x+1:])] = v
+		checked[c.Checksum(data[x+1:])] = v
 		res += v
 	}
 	if x := indexOf(data[1:], data[0]+3); x != -1 {
 		v := chain(data[x+1:])
-		checked[checksum(data[x+1:])] = v
+		checked[c.Checksum(data[x+1:])] = v
 		res += v
 	}
 
